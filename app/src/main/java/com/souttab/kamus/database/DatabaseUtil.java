@@ -13,9 +13,8 @@ public class DatabaseUtil {
 
     private static final String _TABLE_KAMUS = "table_jaringan_komputer";
 
-    private  SQLiteDatabase database;
+    private SQLiteDatabase database;
     private CopyDatabase copyDatabase;
-
 
     String istilah, pengertian;
 
@@ -33,44 +32,65 @@ public class DatabaseUtil {
         }
     }
 
-    // MAKANAN
-    public  List<Kamus> listKamus() {
+    // Untuk ambil semua data yang ada di database
+    // dan digunakan untuk autocomplete
+    public List<Kamus> listKamus() {
         List<Kamus> listKamus = new ArrayList<Kamus>();
-        String query = "SELECT * FROM "+ _TABLE_KAMUS ;
+        String query = "SELECT * FROM " + _TABLE_KAMUS;
 
         open();
 
         Cursor cursor = database.rawQuery(query, null);
 
-        if (cursor.moveToFirst()) {
-            Kamus entity;
-            do {
-                entity = new Kamus();
-                istilah = cursor.getString(cursor.getColumnIndex("istilah"));
-                pengertian = cursor.getString(cursor.getColumnIndex("pengertian"));
+        try {
+            if (cursor.moveToFirst()) {
+                Kamus entity;
+                do {
+                    entity = new Kamus();
+                    istilah = cursor.getString(cursor.getColumnIndex("istilah"));
+                    pengertian = cursor.getString(cursor.getColumnIndex("pengertian"));
 
-                entity.setIstilah(istilah);
-                entity.setPenjelasan(pengertian);
+                    entity.setIstilah(istilah);
+                    entity.setPenjelasan(pengertian);
 
-                listKamus.add(entity);
-            } while (cursor.moveToNext());
+                    listKamus.add(entity);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            close();
         }
-        close();
         return listKamus;
     }
 
+    /*
+    * Untuk ambil data berdasarkan inputan user
+    * jika ada tidak ditemukan makan
+    * akan return value null
+    *
+    * return kamus jika ada data yang ditemukan
+    * return null kalau tidak ada ditemukan data yang dimaksud
+    */
     public Kamus getKamus(String istilah) {
+        // buka koneksi ke database
         open();
+        // set query ke database
+        Cursor cursor = database.rawQuery("SELECT * FROM " + _TABLE_KAMUS + " WHERE istilah LIKE '" + istilah + "%'", null);
 
-        Cursor cursor = database.query(true, _TABLE_KAMUS, new String[]{"istilah",
-                "pengertian"}, "istilah like ?", new String[]{"%"+istilah+"%"}, null, null, null,null);
-        Kamus kamus = new Kamus();
-        if (cursor != null) {
-            cursor.moveToFirst();
-            kamus.setIstilah(cursor.getString(cursor.getColumnIndex("istilah")));
-            kamus.setPenjelasan(cursor.getString(cursor.getColumnIndex("pengertian")));
+        Kamus kamus = null;
+
+        try {
+            // jika data tidak kosong maka ambil data dan masukkan ke dalan entitas
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    kamus = new Kamus();
+                    kamus.setIstilah(cursor.getString(cursor.getColumnIndex("istilah")));
+                    kamus.setPenjelasan(cursor.getString(cursor.getColumnIndex("pengertian")));
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            // tutup koneksi ke database
+            close();
         }
-        close();
         return kamus;
     }
- }
+}
