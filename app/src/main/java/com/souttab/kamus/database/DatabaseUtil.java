@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DatabaseUtil {
 
-    private static final String _TABLE_KAMUS = "table_jaringan_komputer";
+    private static final String _TABLE_KAMUS = "internet";
 
     private SQLiteDatabase database;
     private CopyDatabase copyDatabase;
@@ -47,7 +47,7 @@ public class DatabaseUtil {
                 Kamus entity;
                 do {
                     entity = new Kamus();
-                    istilah = cursor.getString(cursor.getColumnIndex("istilah"));
+                    istilah = cursor.getString(cursor.getColumnIndex("Istilah"));
                     pengertian = cursor.getString(cursor.getColumnIndex("pengertian"));
 
                     entity.setIstilah(istilah);
@@ -74,7 +74,7 @@ public class DatabaseUtil {
         // buka koneksi ke database
         open();
         // set query ke database
-        Cursor cursor = database.rawQuery("SELECT * FROM " + _TABLE_KAMUS + " WHERE istilah LIKE '" + istilah + "%'", null);
+        Cursor cursor = database.rawQuery("SELECT * FROM " + _TABLE_KAMUS + " WHERE Istilah LIKE '" + istilah + "%'", null);
 
         Kamus kamus = null;
 
@@ -83,7 +83,7 @@ public class DatabaseUtil {
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     kamus = new Kamus();
-                    kamus.setIstilah(cursor.getString(cursor.getColumnIndex("istilah")));
+                    kamus.setIstilah(cursor.getString(cursor.getColumnIndex("Istilah")));
                     kamus.setPenjelasan(cursor.getString(cursor.getColumnIndex("pengertian")));
                 } while (cursor.moveToNext());
             }

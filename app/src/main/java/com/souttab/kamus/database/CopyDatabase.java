@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class CopyDatabase extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "KamusJaringan";
+    private static final String DATABASE_NAME = "istilahinternet";
     private Context context;
     private static String DATABASE_PATH = null;
     private SQLiteDatabase sqLiteDatabase;

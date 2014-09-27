@@ -3,7 +3,7 @@ package com.souttab.kamus;
 public class Kamus {
 
     private String istilah;
-    private String penjelasan;
+    private String pengertian;
 
     public String getIstilah() {
         return istilah;
@@ -14,10 +14,10 @@ public class Kamus {
     }
 
     public String getPenjelasan() {
-        return penjelasan;
+        return pengertian;
     }
 
     public void setPenjelasan(String penjelasan) {
-        this.penjelasan = penjelasan;
+        this.pengertian = penjelasan;
     }
 }
