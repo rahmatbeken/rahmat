@@ -7,19 +7,42 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+
         android:orientation="vertical"
         android:background="#53c6ff"
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
         <com.pkmmte.view.CircularImageView
+            android:layout_marginTop="30dp"
             android:layout_gravity="center"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/rahmat"
             app:border_color="#79ff6c"
             app:border_width="4dp"
             app:shadow="true"
             />
         </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Rahmat"
+        android:id="@+id/textView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="09372009"
+        android:id="@+id/textView3" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Teknik Informatika"
+        android:id="@+id/textView4" />
 </LinearLayout>

@@ -23,7 +23,6 @@
             android:layout_height="wrap_content" />
 
         <AutoCompleteTextView
-            android:textColor="#fff"
             android:paddingTop="20dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -55,6 +54,7 @@
             android:padding="4dp"
             android:textSize="15dp"
             android:id="@+id/textViewKosong"
+            android:textColor="#150b28"
             android:text="@string/kosong"
             android:gravity="center"
             android:layout_width="match_parent"
@@ -66,12 +66,14 @@
             android:padding="4dp"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="#150b28"
             android:id="@+id/textViewIstilah"
             android:text="@string/istilah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:textColor="#150b28"
             android:visibility="gone"
             android:padding="4dp"
             android:id="@+id/textViewPengertian"
