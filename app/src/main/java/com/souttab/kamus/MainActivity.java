@@ -1,7 +1,10 @@
 package com.souttab.kamus;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.Menu;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +30,7 @@ public class MainActivity extends Activity {
     private Button buttonCari;
     private AutoCompleteTextView autoCompleteTextView;
     private TextView textViewIstilah, textViewPengertian, textViewKosong;
+    private ImageView gambar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,7 @@ public class MainActivity extends Activity {
         textViewPengertian = (TextView) findViewById(R.id.textViewPengertian);
         textViewKosong = (TextView) findViewById(R.id.textViewKosong);
         buttonCari = (Button) findViewById(R.id.buttonSearch);
+        gambar = (ImageView) findViewById(R.id.imageView);
 
 
         // untuk set autocomplete
@@ -84,8 +90,12 @@ public class MainActivity extends Activity {
                         textViewIstilah.setText(kamus.getIstilah());
                         // tampilkan pengertian yang didapatkan
                         textViewPengertian.setText(Html.fromHtml(
-                                "<p align=\"justify\"> "+ kamus.getPenjelasan() + "</p>"
+                                "<p align=\"justify\"> " + kamus.getPenjelasan() + "</p>"
                         ));
+                        if (kamus.getGambar() != null) {
+                            gambar.setVisibility(View.VISIBLE);
+                            gambar.setImageBitmap(BitmapFactory.decodeByteArray(kamus.getGambar(), 0, kamus.getGambar().length));
+                        } else gambar.setVisibility(View.VISIBLE);
                     } else {
                         // jika tidak ada data maka
                         // kosongkan tampilan
@@ -105,23 +115,5 @@ public class MainActivity extends Activity {
             }
         });
 
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.about) {
-            // panggil class about
-            Intent layoutPanggil = new Intent(this, AboutAcvitity.class);
-            // panggil sekarang
-            startActivity(layoutPanggil);
-        }
-        return super.onOptionsItemSelected(item);
     }
 }

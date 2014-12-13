@@ -13,16 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="250dp">
 
-        <com.pkmmte.view.CircularImageView
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/rahmat"
-            app:border_color="#79ff6c"
-            app:border_width="4dp"
-            app:shadow="true"
-            />
+        <!--<com.pkmmte.view.CircularImageView-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="200dp"-->
+            <!--android:src="@drawable/rahmat"-->
+            <!--app:border_color="#79ff6c"-->
+            <!--app:border_width="4dp"-->
+            <!--app:shadow="true"-->
+            <!--/>-->
         </LinearLayout>
 
     <TextView

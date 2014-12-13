@@ -1,6 +1,8 @@
 package com.souttab.kamus;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -37,8 +39,16 @@ public class Menu extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.buttonAbout :
-                intent = new Intent(Menu.this, AboutAcvitity.class);
-                startActivity(intent);
+                finish();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this).setTitle("Keluar").setMessage("Yakin ingin keluar ?").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        }).setNegativeButton("Batal", null).show();
     }
 }

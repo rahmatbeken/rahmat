@@ -47,7 +47,7 @@ public class CopyDatabase extends SQLiteOpenHelper {
 
     public void openDatabase() throws SQLException {
         String path = DATABASE_PATH + DATABASE_NAME;
-        sqLiteDatabase = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
+        sqLiteDatabase = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY |SQLiteDatabase.NO_LOCALIZED_COLLATORS);
     }
 
     public synchronized void close() {

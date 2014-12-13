@@ -17,6 +17,7 @@ public class DatabaseUtil {
     private CopyDatabase copyDatabase;
 
     String istilah, pengertian;
+    byte[] gambar;
 
     public DatabaseUtil(Context context) {
         copyDatabase = new CopyDatabase(context);
@@ -49,9 +50,11 @@ public class DatabaseUtil {
                     entity = new Kamus();
                     istilah = cursor.getString(cursor.getColumnIndex("Istilah"));
                     pengertian = cursor.getString(cursor.getColumnIndex("pengertian"));
+                    gambar = cursor.getBlob(cursor.getColumnIndex("Gambar"));
 
                     entity.setIstilah(istilah);
                     entity.setPenjelasan(pengertian);
+                    entity.setGambar(gambar);
 
                     listKamus.add(entity);
                 } while (cursor.moveToNext());
@@ -85,6 +88,7 @@ public class DatabaseUtil {
                     kamus = new Kamus();
                     kamus.setIstilah(cursor.getString(cursor.getColumnIndex("Istilah")));
                     kamus.setPenjelasan(cursor.getString(cursor.getColumnIndex("pengertian")));
+                    kamus.setGambar(cursor.getBlob(cursor.getColumnIndex("Gambar")));
                 } while (cursor.moveToNext());
             }
         } finally {

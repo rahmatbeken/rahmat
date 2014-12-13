@@ -50,36 +50,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:padding="4dp"
-            android:textSize="15dp"
-            android:id="@+id/textViewKosong"
-            android:textColor="#150b28"
-            android:text="@string/kosong"
-            android:gravity="center"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView" >
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
-        <TextView
-            android:visibility="gone"
-            android:padding="4dp"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="#150b28"
-            android:id="@+id/textViewIstilah"
-            android:text="@string/istilah"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:padding="4dp"
+                    android:textSize="15dp"
+                    android:id="@+id/textViewKosong"
+                    android:textColor="#150b28"
+                    android:text="@string/kosong"
+                    android:gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-        <TextView
-            android:textColor="#150b28"
-            android:visibility="gone"
-            android:padding="4dp"
-            android:id="@+id/textViewPengertian"
-            android:text="@string/pengertian"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:visibility="gone"
+                    android:padding="4dp"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#150b28"
+                    android:id="@+id/textViewIstilah"
+                    android:text="@string/istilah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:textColor="#150b28"
+                    android:visibility="gone"
+                    android:padding="4dp"
+                    android:id="@+id/textViewPengertian"
+                    android:text="@string/pengertian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </ScrollView>
 
 
     </LinearLayout>

@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/button_shadow"
-            android:text="Tentang Aplikasi"
+            android:text="Keluar"
             android:textColor="#fff"
             android:textSize="20dp" />
     </LinearLayout>
